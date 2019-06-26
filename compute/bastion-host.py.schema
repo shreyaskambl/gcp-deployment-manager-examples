@@ -1,0 +1,24 @@
+imports:
+  - path: bastion-host.py
+
+required:
+- name
+- network
+- subnetwork
+- zone
+- region
+- account_name
+
+properties:
+  name:
+    type: string
+  network:
+    type: string
+  zone:
+    type: string
+  region:
+    type: string
+  subnetwork:
+    type: string
+  account_name:
+    type: string
