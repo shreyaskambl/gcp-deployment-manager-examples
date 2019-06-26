@@ -1,0 +1,46 @@
+imports:
+- path: firewall.py
+
+properties:
+  network:
+    type: string
+  rules:
+    type: array
+    default:
+      - name: allow-VPC_NETWORK-ilb-hc
+        allowed:
+          - IPProtocol: tcp
+            ports:
+              - 80
+        priority: 1000
+        direction: INGRESS
+        sourceRanges:
+          - 0.0.0.0/16
+      - name: allow-VPC_NETWORK-https
+        allowed:
+          - IPProtocol: tcp
+            ports:
+              - 443
+        priority: 1000
+        direction: INGRESS
+        sourceRanges:
+          - 0.0.0.0/0
+      - name: allow-VPC_NETWORK-rdp-ssh
+        allowed:
+          - IPProtocol: tcp
+            ports:
+              - 3389
+              - 22
+        priority: 1000
+        direction: INGRESS
+        sourceRanges:
+          - 0.0.0.0/0
+      - name: allow-VPC_NETWORK-internal-http
+        allowed:
+          - IPProtocol: tcp
+            ports:
+              - 80
+        priority: 1000
+        direction: INGRESS
+        sourceRanges:
+          - SUBNETWORK
