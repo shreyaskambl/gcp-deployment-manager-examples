@@ -1,0 +1,73 @@
+imports:
+- path: cluster.py
+
+required:
+- zone
+- subnetwork
+- clustername
+
+properties:
+  zone:
+    type: string
+    description: Zone in which the cluster should run.
+  subnetwork:
+    type: string
+    description: subnetwork name
+  clustername:
+    type: string
+    description: Name of the cluster.
+  clusterVersion:
+    type: string
+    description: Version of GKE to be used.
+    default: latest
+  gkeImageType:
+    type: string
+    description: GKE Base image type to be used, cos and ubuntu are currently supported.
+    default: cos
+  initialNodeCount:
+    type: integer
+    description: Initial number of nodes desired in the cluster.
+    default: 6
+  maxNodeCount:
+    type: integer
+    description: Maximum number of nodes expected in the cluster.
+    default: 8
+  machineType:
+    type: string
+    description: Machine Type to be used.
+    default: n1-highmem-4
+  machineDiskSize:
+    type: integer
+    description: Size of the disk to be used.
+    default: 100
+  clusterIPv4CidrBlock:
+    type: string
+    description: Cluster IP range for the cluster. Subnets will use this as secondary IP range.
+    default: 10.96.0.0/14
+  nodeIPv4CidrBlock:
+    type: string
+    description: Node IP range for the cluster. Subnets will be created for this range.
+    default: 192.168.12.0/24
+  servicesIPv4CidrBlock:
+    type: string
+    description: Services IP range for the cluster. Subnets will use this as secondary IP range.
+    default: 172.16.0.0/18
+
+
+outputs:
+  selfLink:
+    type: string
+  Zone:
+    type: string
+  endpoint:
+    type: string
+  currentMasterVersion:
+    type: string
+  currentNodeVersion:
+    type: string
+  status:
+    type: string
+  servicesIpv4Cidr:
+    type: string
+  currentNodeCount:
+    type: string
