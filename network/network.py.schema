@@ -1,0 +1,16 @@
+info:
+  title: GKE Setup
+  author: Karan Jain <KJain4@slb.com>
+  description: >
+    Creates a GKE Cluster in the provided region along with required networks and sub-networks
+
+imports:
+- path: pdi-network-creation.py
+
+required:
+- vpcNetwork
+
+properties:
+  vpcNetwork:
+    type: string
+    description: Machine Type to be used.
